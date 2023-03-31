@@ -14,4 +14,4 @@ For example, the json file copc.json converts a .las point cloud format to a clo
 ]
 ```
 
-The shell script within this repo will loop through a directory and find all .laz and .las files and then convert them to copc. The shell script references the json file, so the path needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. The shell script was written by chatGPT. 
+The shell script within this repo (pdal_copc.sh) will loop through a directory and find all .laz and .las files and then convert them to copc. The shell script references the json file, so the path needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. The shell script was written by chatGPT. 

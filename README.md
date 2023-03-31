@@ -1,10 +1,11 @@
 # pdal_copc
 This repo has pdal scripts to analyze point clouds
 
-Documentation is found [here](https://pdal.io/en/2.5.2)
+Documentation for PDAL is found [here](https://pdal.io/en/2.5.2)
 
+The json files within this repo define the pipeline processing steps to be carried out in PDAL. 
 
-json file
+For example, the json file copc.json converts a .las point cloud format to a cloud optimized point cloud (copc)
 
 ```
 [
@@ -13,10 +14,4 @@ json file
 ]
 ```
 
-command line
-
-```
-find . -type f \( -name "*.las" -o -name "*.laz" \) -print0 | while IFS= read -r -d '' file; do     extension="${file##*.}";     if [[ "$extension" == "las" ]]; then         pdal pipeline -i copc.json --readers.las.filename="$file" --writers.copc.filename="${file%.las}.copc.laz";     elif [[ "$extension" == "laz" ]]; then         pdal pipeline -i copc.json --readers.las.filename="$file" --writers.copc.filename="${file%.laz}.copc.laz";     fi; done
-```
-
-
+The shell script within this repo will loop through a directory and find all .laz and .las files and then convert them to copc. The shell script references the json file, so the path needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. The shell script was written by chatGPT. 

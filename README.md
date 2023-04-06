@@ -72,6 +72,33 @@ chmod +x pdal_copc.sh
 
 Create a Dockerfile for your container that includes PDAL and any other dependencies needed for you shell script. 
 
-`touch Dockerfile'
+`touch Dockerfile`
+
+### Edit the Dockerfile
+
+`nano Dockerfile`
+
+```
+FROM pdal/pdal:latest
+
+WORKDIR /app
+
+COPY pdal_copc.sh /app/pdal_copc.sh
+
+COPY copc.json /app/copc.json
+
+RUN chmod +x pdal_copc.sh
+
+ENTRYPOINT ["./pdal_copc.sh"]
+```
+The following is happening in the Dockerfile:
+
+A pdal base image is being pulled from Dockerhub
+
+I set the working directory of the container to `/app`
+
+I copy in the shell script to the path `/app
+
+I copy in the shell scropt 
 
 The shell script was written by chatGPT. 

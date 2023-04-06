@@ -30,12 +30,31 @@ For example, the json file copc.json converts a .las point cloud format to a clo
 </br>
 #Create an empty shell script
 
-`touch pdal_copc.sh'
+`touch pdal_copc.sh`
 
 </br>
 
-#edit the shell script
+#Edit the shell script
+`nano pdal_cocp.sh`
 
+`#!/bin/bash
+
+# Define the pipeline JSON file
+pipeline="/app/copc.json" #use this path if in a container
+#pipeline="./copc.json"  #use this path if you are running the shell script on your local conda environment
+
+# Loop over LAS/LAZ files in the current directory and subdirectories
+find . -type f \( -name "*.las" -o -name "*.laz" \) -print0 | while IFS= read -r -d '' file; do
+    # Get the file extension
+    extension="${file##*.}"
+
+    # Run the pipeline with the appropriate reader based on the file extension
+    if [[ "$extension" == "las" ]]; then
+        pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="${file%.las}.copc.laz"
+    elif [[ "$extension" == "laz" ]]; then
+        pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="${file%.laz}.copc.laz"
+    fi
+done`
 
 
 The shell script within this repo (pdal_copc.sh) will loop through a directory and find all .laz and .las files and then convert them to copc. The shell script references the json file, so the path to the json needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. 

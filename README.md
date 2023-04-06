@@ -97,8 +97,12 @@ A pdal base image is being pulled from Dockerhub
 
 I set the working directory of the container to `/app`
 
-I copy in the shell script to the path `/app
+I copy in the shell script to the path `/app`
 
-I copy in the shell scropt 
+I copy in the shell script to the path `/app`
+
+I run `chmod +x` on the shell script to give everyone permissions
+
+The entrypoint is where the container starts. I want it to start with the shell script.
 
 The shell script was written by chatGPT. 

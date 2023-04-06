@@ -7,6 +7,18 @@ The json files within this repo define the pipeline processing steps to be carri
 
 For example, the json file copc.json converts a .las point cloud format to a cloud optimized point cloud (copc)
 
+#Create an empty json file
+
+`touch copc.json`
+</br>
+
+#Open the json file
+
+`nano cocp.json`
+
+</br>
+
+
 ```
 [
     "file.las",

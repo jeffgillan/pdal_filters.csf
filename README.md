@@ -61,6 +61,7 @@ done
 
 The shell script within this repo (pdal_copc.sh) will loop through a directory and find all .laz and .las files and then convert them to copc. The shell script references the json file, so the path to the json needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. 
 
+### In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
 ```
 chmod +x pdal_copc.sh
 ./pdal_copc.sh

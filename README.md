@@ -1,11 +1,14 @@
-# pdal_copc
-This repo has pdal scripts to analyze point clouds
+This repo describes how to run PDAl in a local conda environment and in Docker containers
 
-Documentation for PDAL is found [here](https://pdal.io/en/2.5.2)
+PDAL is a library for reading and writing point cloud data. Documentation for PDAL is found [here](https://pdal.io/en/2.5.2)
 
-The json files within this repo define the pipeline processing steps to be carried out in PDAL. 
 
-For example, the json file copc.json converts a .las point cloud format to a cloud optimized point cloud (copc)
+# Running Pdal from local conda environment
+
+`conda create --yes --name pdal_copc --channel conda-forge pdal`
+
+
+
 </br>
 </br>
 </br>

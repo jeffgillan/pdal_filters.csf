@@ -7,11 +7,8 @@ PDAL is a library for reading and writing point cloud data. Documentation for PD
 
 `conda create --yes --name pdal_copc --channel conda-forge pdal`
 
+</br>
 
-
-</br>
-</br>
-</br>
 ### Create an empty json file. This will be the 'pipeline' file.
 
 `touch copc.json`

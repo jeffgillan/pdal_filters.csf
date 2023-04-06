@@ -3,7 +3,7 @@ This repo describes how to run PDAl in a local conda environment and in Docker c
 PDAL is a library for reading and writing point cloud data. Documentation for PDAL is found [here](https://pdal.io/en/2.5.2)
 
 
-# Running Pdal from local conda environment
+## Running Pdal from local conda environment
 
 `conda create --yes --name pdal_copc --channel conda-forge pdal`
 
@@ -67,5 +67,11 @@ The shell script within this repo (pdal_copc.sh) will loop through a directory a
 chmod +x pdal_copc.sh
 ./pdal_copc.sh
 ```
+
+## Run PDAl in a Docker Container
+
+Create a Dockerfile for your container that includes PDAL and any other dependencies needed for you shell script. 
+
+`touch Dockerfile'
 
 The shell script was written by chatGPT. 

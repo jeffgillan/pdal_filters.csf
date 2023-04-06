@@ -105,4 +105,12 @@ I run `chmod +x` on the shell script to give everyone permissions
 
 The entrypoint is where the container starts. I want it to start with the shell script.
 
+### Build the docker image
+
+`docker build .`
+
+### Run the container
+`docker run -v $(pwd):/app 590`
+
+
 The shell script was written by chatGPT. 

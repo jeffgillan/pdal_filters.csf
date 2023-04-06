@@ -28,6 +28,7 @@ For example, the json file copc.json converts a .las point cloud format to a clo
 ]
 ```
 </br>
+
 ### Create an empty shell script
 
 `touch pdal_copc.sh`

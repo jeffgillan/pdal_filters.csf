@@ -6,7 +6,9 @@ Documentation for PDAL is found [here](https://pdal.io/en/2.5.2)
 The json files within this repo define the pipeline processing steps to be carried out in PDAL. 
 
 For example, the json file copc.json converts a .las point cloud format to a cloud optimized point cloud (copc)
-
+</br>
+</br>
+</br>
 #Create an empty json file
 
 `touch copc.json`

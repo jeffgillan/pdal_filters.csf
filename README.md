@@ -9,18 +9,18 @@ For example, the json file copc.json converts a .las point cloud format to a clo
 </br>
 </br>
 </br>
-#Create an empty json file
+#Create an empty json file. This will be the 'pipeline' file.
 
 `touch copc.json`
 </br>
 
-#Open the json file
+#Open the pipeline file
 
 `nano cocp.json`
 
 </br>
 
-
+#Write this info in the pipeline file. It will convert .las files to .copc.laz files
 ```
 [
     "file.las",

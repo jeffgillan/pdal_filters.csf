@@ -107,7 +107,7 @@ The entrypoint is where the container starts. I want it to start with the shell 
 
 ### Build the docker image
 
-`docker build .`
+`docker build jeffgillan/pdal_copc:0.1 .`
 
 ### Run the container. You are mounting a volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the /app container directory. '590' is the ID number of the docker image. 
 `docker run -v $(pwd):/app 590`

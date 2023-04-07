@@ -60,7 +60,7 @@ done
 ```
 
 
-The shell script within this repo (pdal_copc.sh) will loop through a directory and find all .laz and .las files and then convert them to copc. The shell script references the json file, so the path to the json needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. 
+The shell script within this repo (pdal_copc.sh) will loop through a directory and find all .laz and .las files and then convert them to copc. The shell script references the json file, so the path to the json needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. The shell script was written by chatGPT 3.5. 
 
 ### In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
 ```
@@ -109,8 +109,13 @@ The entrypoint is where the container starts. I want it to start with the shell 
 
 `docker build .`
 
-### Run the container
+### Run the container. You are mounting a volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the /app container directory. '590' is the ID number of the docker image. 
 `docker run -v $(pwd):/app 590`
 
+### 'Tag' or change name of docker image 
 
-The shell script was written by chatGPT. 
+### Upload image to Dockerhub
+
+### Run the docker image in Cyverse Cloud Shell
+
+### Create an app in the DE to run the docker image

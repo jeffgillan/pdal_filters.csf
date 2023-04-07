@@ -115,7 +115,9 @@ You are mounting a volume (-v) to the container which has the point cloud data. 
 
 `docker run -v $(pwd):/app 590`
 
+I have uploaded the docker image to Dockerhub, so you can run the image by pulling directly from Dockerhub
 
+`docker run -v $(pwd):/app jeffgillan/pdal_copc:0.1`
 
 
 ### Upload image to Dockerhub and harbor

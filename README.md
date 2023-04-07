@@ -46,7 +46,7 @@ pipeline="/app/copc.json" #use this path if in a container
 #pipeline="./copc.json"  #use this path if you are running the shell script on your local conda environment
 
 ### Loop over LAS/LAZ files in the current directory and subdirectories
-find . -type f \( -name "*.las" -o -name "*.laz" \) -print0 | while IFS= read -r -d '' file; do
+find /data -type f \( -name "*.las" -o -name "*.laz" \) -print0 | while IFS= read -r -d '' file; do
     # Get the file extension
     extension="${file##*.}"
 
@@ -113,11 +113,11 @@ You are telling it to build an image with the name 'jeffgillan/pdal_copc' with t
 ### Run the container 
 You are mounting a volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the /app container directory. '590' is the ID number of the docker image. 
 
-`docker run -v $(pwd):/app 590`
+`docker run -v $(pwd):/data 590`
 
 I have uploaded the docker image to Dockerhub, so you can run the image by pulling directly from Dockerhub
 
-`docker run -v $(pwd):/app jeffgillan/pdal_copc:0.1`
+`docker run -v $(pwd):/data jeffgillan/pdal_copc:0.2`
 
 
 ### Upload image to Dockerhub and harbor

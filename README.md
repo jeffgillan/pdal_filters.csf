@@ -116,11 +116,9 @@ You are mounting a volume (-v) to the container which has the point cloud data. 
 `docker run -v $(pwd):/app 590`
 
 
-### 'Tag' or change name of docker image 
 
-### Git push pdal_copc.sh and Dockerfile to Github repo
 
-### Upload image to Dockerhub
+### Upload image to Dockerhub and harbor
 
 ### Run the docker image in Cyverse Cloud Shell
 

@@ -106,10 +106,13 @@ I run `chmod +x` on the shell script to give everyone permissions
 The entrypoint is where the container starts. I want it to start with the shell script.
 
 ### Build the docker image
+You are telling it to build an image with the name 'jeffgillan/pdal_copc' with the tag '0.1'. You are building from the Dockerfile in the current working directory '.'
 
 `docker build -t jeffgillan/pdal_copc:0.1 .`
 
-### Run the container. You are mounting a volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the /app container directory. '590' is the ID number of the docker image. 
+### Run the container 
+You are mounting a volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the /app container directory. '590' is the ID number of the docker image. 
+
 `docker run -v $(pwd):/app 590`
 
 

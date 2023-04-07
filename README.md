@@ -112,7 +112,10 @@ The entrypoint is where the container starts. I want it to start with the shell 
 ### Run the container. You are mounting a volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the /app container directory. '590' is the ID number of the docker image. 
 `docker run -v $(pwd):/app 590`
 
+
 ### 'Tag' or change name of docker image 
+
+### Git push pdal_copc.sh and Dockerfile to Github repo
 
 ### Upload image to Dockerhub
 

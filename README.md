@@ -120,8 +120,6 @@ I have uploaded the docker image to Dockerhub, so you can run the image by pulli
 `docker run -v $(pwd):/data jeffgillan/pdal_copc:0.2`
 
 
-### Upload image to Dockerhub and harbor
 
-### Run the docker image in Cyverse Cloud Shell
 
 ### Create an app in the DE to run the docker image

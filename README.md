@@ -99,7 +99,7 @@ I set the working directory of the container to `/app`
 
 I copy in the shell script to the path `/app`
 
-I copy in the shell script to the path `/app`
+I copy in the pipeline json file to the path `/app`
 
 I run `chmod +x` on the shell script to give everyone permissions
 
@@ -110,12 +110,17 @@ You are telling it to build an image with the name 'jeffgillan/pdal_copc' with t
 
 `docker build -t jeffgillan/pdal_copc:0.1 .`
 
+### Upload Image to Docker Hub
+```
+docker push jeffgillan/pdal_copc:0.1
+```
+
 ### Run the container 
 You are mounting a volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the /app container directory. '590' is the ID number of the docker image. 
 
 `docker run -v $(pwd):/data 590`
 
-I have uploaded the docker image to Dockerhub, so you can run the image by pulling directly from Dockerhub
+I have uploaded the docker image to Dockerhub , so you can run the image by pulling directly from Dockerhub
 
 `docker run -v $(pwd):/data jeffgillan/pdal_copc:0.2`
 

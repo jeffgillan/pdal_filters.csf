@@ -116,9 +116,9 @@ docker push jeffgillan/pdal_copc:1.0
 ```
 
 ### Run the container 
-You are mounting a local volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the `/data` container directory. 
+You are mounting a local volume (-v) directory to the container (`/data`). This local directory should have all of the point clouds files you want to convert.
 
 `docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
 
 ### Outputs
-
+The tool should output .copc.laz files to the working directory where the container was launched  

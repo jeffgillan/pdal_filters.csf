@@ -9,4 +9,4 @@ COPY copc.json /app/copc.json
 
 RUN chmod +x pdal_copc.sh
 
-ENTRYPOINT ["./pdal_copc.sh"]
+ENTRYPOINT ["/app/pdal_copc.sh"]

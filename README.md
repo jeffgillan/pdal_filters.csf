@@ -121,4 +121,4 @@ You are mounting a local volume (-v) directory to the container (`/data`). This 
 `docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
 
 ### Outputs
-The tool should output .copc.laz files to the working directory where the container was launched  
+The tool should output `.copc.laz` files to the working directory where the container was launched. It is slow and might take a while.   

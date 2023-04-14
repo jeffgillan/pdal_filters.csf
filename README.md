@@ -120,3 +120,5 @@ You are mounting a local volume (-v) to the container which has the point cloud 
 
 `docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
 
+### Outputs
+

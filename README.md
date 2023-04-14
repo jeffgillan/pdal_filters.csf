@@ -46,7 +46,7 @@ pipeline="/app/copc.json" #use this path if in a container
 #pipeline="./copc.json"  #use this path if you are running the shell script on your local conda environment
 
 ### Loop over LAS/LAZ files in a directory. If you are running this shell script in a container, then the directory structure is referring to the container. 
-find /data -type f \( -name "*.las" -o -name "*.laz" \) -print0 | while IFS= read -r -d '' file; do
+find ./ -type f \( -name "*.las" -o -name "*.laz" \) -print0 | while IFS= read -r -d '' file; do
     # Get the file extension
     extension="${file##*.}"
 

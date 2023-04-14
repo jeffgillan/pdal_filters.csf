@@ -20,7 +20,7 @@ PDAL is a library for reading and writing point cloud data. Documentation for PD
 
 </br>
 
-### Write this info in the pipeline file. It will convert .las files to .copc.laz files
+### Write this info in the pipeline file. It will convert .las & .laz files to cloud optimized point clouds (.copc.laz)
 ```
 [
     "file.las",
@@ -36,7 +36,7 @@ PDAL is a library for reading and writing point cloud data. Documentation for PD
 </br>
 
 ### Edit the shell script
-`nano pdal_cocp.sh`
+`nano pdal_copc.sh`
 
 ```
 #!/bin/bash
@@ -45,8 +45,8 @@ PDAL is a library for reading and writing point cloud data. Documentation for PD
 pipeline="/app/copc.json" #use this path if in a container
 #pipeline="./copc.json"  #use this path if you are running the shell script on your local conda environment
 
-### Loop over LAS/LAZ files in a directory. If you are running this shell script in a container, then the directory structure is referring to the container. 
-find ./ -type f \( -name "*.las" -o -name "*.laz" \) -print0 | while IFS= read -r -d '' file; do
+### Loop over LAS/LAZ files in a directory. If you are running this shell script in a container, then the script is looking for data in the `/data` in the container directory structure. 
+find /data -type f \( -name "*.las" -o -name "*.laz" \) -print0 | while IFS= read -r -d '' file; do
     # Get the file extension
     extension="${file##*.}"
 
@@ -60,7 +60,7 @@ done
 ```
 
 
-The shell script within this repo (pdal_copc.sh) will loop through a directory and find all .laz and .las files and then convert them to copc. The shell script references the json file, so the path to the json needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. The shell script was written by chatGPT 3.5. 
+The shell script within this repo (pdal_copc.sh) will loop through a directory (currently set to `/data` within the container) and find all .laz and .las files and then convert them to copc. It The shell script references the json file, so the path to the json needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. The shell script was written by chatGPT 3.5. 
 
 ### In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
 ```
@@ -68,7 +68,7 @@ chmod +x pdal_copc.sh
 ./pdal_copc.sh
 ```
 
-## Run PDAl in a Docker Container
+## Run PDAL in a Docker Container
 
 Create a Dockerfile for your container that includes PDAL and any other dependencies needed for you shell script. 
 
@@ -89,7 +89,7 @@ COPY copc.json /app/copc.json
 
 RUN chmod +x pdal_copc.sh
 
-ENTRYPOINT ["./pdal_copc.sh"]
+ENTRYPOINT ["/app/pdal_copc.sh"]
 ```
 The following is happening in the Dockerfile:
 
@@ -106,25 +106,17 @@ I run `chmod +x` on the shell script to give everyone permissions
 The entrypoint is where the container starts. I want it to start with the shell script.
 
 ### Build the docker image
-You are telling it to build an image with the name 'jeffgillan/pdal_copc' with the tag '0.1'. You are building from the Dockerfile in the current working directory '.'
+You are telling it to build an image with the name 'jeffgillan/pdal_copc' with the tag '1.0'. You are building from the Dockerfile in the current working directory '.'
 
-`docker build -t jeffgillan/pdal_copc:0.1 .`
+`docker build -t jeffgillan/pdal_copc:1.0 .`
 
 ### Upload Image to Docker Hub
 ```
-docker push jeffgillan/pdal_copc:0.1
+docker push jeffgillan/pdal_copc:1.0
 ```
 
 ### Run the container 
-You are mounting a volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the /app container directory. '590' is the ID number of the docker image. 
+You are mounting a local volume (-v) to the container which has the point cloud data. It is mounting the present working directory to the `/data` container directory. 
 
-`docker run -v $(pwd):/data 590`
+`docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
 
-I have uploaded the docker image to Dockerhub , so you can run the image by pulling directly from Dockerhub
-
-`docker run -v $(pwd):/data jeffgillan/pdal_copc:0.2`
-
-
-
-
-### Create an app in the DE to run the docker image

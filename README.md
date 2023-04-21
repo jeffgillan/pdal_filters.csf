@@ -16,7 +16,7 @@ PDAL is a library for reading and writing point cloud data. Documentation for PD
 
 ### Open the pipeline file
 
-`nano cocp.json`
+`nano copc.json`
 
 </br>
 
@@ -60,7 +60,7 @@ done
 ```
 
 
-The shell script within this repo (pdal_copc.sh) will loop through a directory (currently set to `/data` within the container) and find all .laz and .las files and then convert them to copc. It The shell script references the json file, so the path to the json needs to be specified within the shell script. The script assumes that the .laz and .las files are in your current working directory when you run the shell script. The shell script was written by chatGPT 3.5. 
+The shell script within this repo (pdal_copc.sh) will loop through a directory (currently set to `/data` within the container) and find all .laz and .las files and then convert them to copc. The shell script references the json file (pipeline), so the path to the json needs to be specified within the shell script. The shell script was written by chatGPT 3.5. 
 
 ### In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
 ```
@@ -116,9 +116,9 @@ docker push jeffgillan/pdal_copc:1.0
 ```
 
 ### Run the container 
-You are mounting a local volume (-v) directory to the container (`/data`). This local directory should have all of the point clouds files you want to convert.
+You are mounting a local volume (-v) directory to the container (`/data`). This local directory should have all of the point clouds files you want to convert. `$(pwd)` is telling it that the point clouds are in the current working directory. Alternatively, you could specify the point clouds are locating in any local directory. e.g., `/home/jgillan/Documents/laz_to_copc`.
 
 `docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
 
 ### Outputs
-The tool should output `.copc.laz` files to the working directory where the container was launched. It is slow and might take a while.   
+The tool should output `.copc.laz` files to the same directory where the input point clouds were storesd. It is slow and might take a while.   

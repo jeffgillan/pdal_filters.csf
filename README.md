@@ -122,3 +122,5 @@ You are mounting a local volume (-v) directory to the container (`/data`). This 
 
 ### Outputs
 The tool should output `.copc.laz` files to the same directory where the input point clouds were storesd. It is slow and might take a while.   
+
+### Next

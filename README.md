@@ -20,21 +20,22 @@ ___
 
 ## How to Build this Docker Container
 
-### PDAL Pipeline
+### 1. PDAL Pipeline
 
 Analyzing pointclouds in PDAL requires users to specify processing steps within a json file. PDAL uses the term ['pipeline'](https://pdal.io/en/2.6.0/pipeline.html) to describe this json file.
 
+#### Create an empty json file 
 
 `touch copc.json`
 </br>
 
-### Open the pipeline file
+#### Open the pipeline file
 
 `nano copc.json`
 
 </br>
 
-### Write this info in the pipeline file. It will convert .las & .laz files to cloud optimized point clouds (.copc.laz)
+#### Write this info in the pipeline file. It will convert .las & .laz files to cloud optimized point clouds (.copc.laz)
 ```
 [
     "file.las",

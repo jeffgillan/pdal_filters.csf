@@ -87,7 +87,7 @@ You are creating a Docker image that includes a PDAL base image, the json pipeli
 `nano Dockerfile`
 
 ```
-FROM pdal/pdal:latest
+FROM pdal/pdal:sha-597ab2df
 
 WORKDIR /app
 

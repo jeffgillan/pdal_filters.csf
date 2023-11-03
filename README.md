@@ -133,7 +133,8 @@ The tool should output `.copc.laz` files to the same directory where the input p
 
 `docker push jeffgillan/pdal_copc:1.0`
 
-
+</br>
+____
 
 ## Running Pdal from local conda environment
 

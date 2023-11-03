@@ -120,7 +120,7 @@ You are telling it to build an image with the name 'jeffgillan/pdal_copc' with t
 `docker build -t jeffgillan/pdal_copc:1.0 .`
 
 ### 5. Run the container 
-You are mounting a local volume (-v) directory to the container (`/data`). This local directory should have all of the point clouds files you want to convert. `$(pwd)` is telling it that the point clouds are in the current working directory. Alternatively, you could specify the point clouds are locating in any local directory. e.g., `/home/jgillan/Documents/laz_to_copc`.
+You are mounting a local volume (-v) directory to the container (`/data`). This local directory should have all of the point clouds files you want to convert. `$(pwd)` is telling it that the point clouds are in the current working directory. Alternatively, you could specify the point clouds are locating in any local directory.
 
 `docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
 
@@ -137,11 +137,13 @@ The tool should output `.copc.laz` files to the same directory where the input p
 
 ## Running Pdal from local conda environment
 
+Create a new conda environment
+
 `conda create --yes --name pdal_copc --channel conda-forge pdal`
 
-</br>
 
-### In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
+In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
+
 ```
 chmod +x pdal_copc.sh
 ./pdal_copc.sh

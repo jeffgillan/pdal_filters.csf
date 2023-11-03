@@ -44,13 +44,13 @@ Analyzing pointclouds in PDAL requires users to specify processing steps within 
 ```
 </br>
 
-### Create an empty shell script
+### 2. Create a shell script
+
+The shell script will loop through a directory (within the container) and find all .laz and .las files and then convert them to copc.laz. The shell script references the json file (pipeline), so the path to the json needs to be specified within the shell script. 
 
 `touch pdal_copc.sh`
 
-</br>
-
-### Edit the shell script
+#### Edit the shell script
 `nano pdal_copc.sh`
 
 ```
@@ -75,7 +75,7 @@ done
 ```
 
 
-The shell script within this repo (pdal_copc.sh) will loop through a directory (currently set to `/data` within the container) and find all .laz and .las files and then convert them to copc. The shell script references the json file (pipeline), so the path to the json needs to be specified within the shell script. The shell script was written by chatGPT 3.5.
+
 
 Create a Dockerfile for your container that includes PDAL and any other dependencies needed for you shell script. 
 

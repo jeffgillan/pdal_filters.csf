@@ -114,30 +114,25 @@ I run `chmod +x` on the shell script to give everyone permissions
 
 The entrypoint is where the container starts. I want it to start with the shell script.
 
-### Build the docker image
+### 4. Build the docker image
 You are telling it to build an image with the name 'jeffgillan/pdal_copc' with the tag '1.0'. You are building from the Dockerfile in the current working directory '.'
 
 `docker build -t jeffgillan/pdal_copc:1.0 .`
 
-### Upload Image to Docker Hub
-```
-docker push jeffgillan/pdal_copc:1.0
-```
-
-### Run the container 
+### 5. Run the container 
 You are mounting a local volume (-v) directory to the container (`/data`). This local directory should have all of the point clouds files you want to convert. `$(pwd)` is telling it that the point clouds are in the current working directory. Alternatively, you could specify the point clouds are locating in any local directory. e.g., `/home/jgillan/Documents/laz_to_copc`.
 
 `docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
 
-### Outputs
+
+### 6. Outputs
+
 The tool should output `.copc.laz` files to the same directory where the input point clouds were storesd. It is slow and might take a while.   
 
-### Next
+### 7. Upload Image to Docker Hub
 
+`docker push jeffgillan/pdal_copc:1.0`
 
-This repo describes how to run PDAl in a local conda environment and in Docker containers
-
-PDAL is a library for reading and writing point cloud data. Documentation for PDAL is found [here](https://pdal.io/en/2.5.2)
 
 
 ## Running Pdal from local conda environment
@@ -145,8 +140,6 @@ PDAL is a library for reading and writing point cloud data. Documentation for PD
 `conda create --yes --name pdal_copc --channel conda-forge pdal`
 
 </br>
-
- 
 
 ### In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
 ```

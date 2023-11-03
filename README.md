@@ -1,15 +1,29 @@
-This repo describes how to run PDAl in a local conda environment and in Docker containers
+## Run PDAL in a Docker Container
 
-PDAL is a library for reading and writing point cloud data. Documentation for PDAL is found [here](https://pdal.io/en/2.5.2)
+This is a tutorial to demonstrate how to containerize and run PDAL. [PDAL](https://pdal.io/en/2.6.0/) is a stand-alone software package that can analyze and manipulate point cloud data files such as .las and .laz. In this tutorial, we will convert a LiDAR .laz file into a [Cloud-optimized Point Cloud format (.copc.laz)](https://www.gillanscience.com/cloud-native-geospatial/copc/). 
 
+### 1. Clone this repository to your local machine
 
-## Running Pdal from local conda environment
+`git clone https://github.com/jeffgillan/pdal_copc.git`
 
-`conda create --yes --name pdal_copc --channel conda-forge pdal`
+### 2. Change directories into the newly cloned repository
 
+`cd pdal_copc`
+
+### 3. Run the Container
+
+`docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
+
+Your if everything worked correctly, you should have a new file `tree.copc.laz` in your present working directory.
+___
 </br>
 
-### Create an empty json file. This will be the 'pipeline' file.
+## How to Build this Docker Container
+
+### PDAL Pipeline
+
+Analyzing pointclouds in PDAL requires users to specify processing steps within a json file. PDAL uses the term ['pipeline'](https://pdal.io/en/2.6.0/pipeline.html) to describe this json file.
+
 
 `touch copc.json`
 </br>
@@ -60,30 +74,7 @@ done
 ```
 
 
-The shell script within this repo (pdal_copc.sh) will loop through a directory (currently set to `/data` within the container) and find all .laz and .las files and then convert them to copc. The shell script references the json file (pipeline), so the path to the json needs to be specified within the shell script. The shell script was written by chatGPT 3.5. 
-
-### In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
-```
-chmod +x pdal_copc.sh
-./pdal_copc.sh
-```
-
-## Run PDAL in a Docker Container
-
-This is a tutorial to demonstrate how to containerize and run PDAL. [PDAL](https://pdal.io/en/2.6.0/) is a stand-alone software package that can analyze and manipulate point cloud data files such as .las and .laz. In this tutorial, we will convert a LiDAR .laz file into a [Cloud-optimized Point Cloud format (.copc.laz)](https://www.gillanscience.com/cloud-native-geospatial/copc/). 
-
-### 1. Clone this repository to your local machine
-
-`git clone https://github.com/jeffgillan/pdal_copc.git`
-
-### 2. Change directories into the newly cloned repository
-
-`cd pdal_copc`
-
-### 3. Run the Container
-
-`docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
-
+The shell script within this repo (pdal_copc.sh) will loop through a directory (currently set to `/data` within the container) and find all .laz and .las files and then convert them to copc. The shell script references the json file (pipeline), so the path to the json needs to be specified within the shell script. The shell script was written by chatGPT 3.5.
 
 Create a Dockerfile for your container that includes PDAL and any other dependencies needed for you shell script. 
 
@@ -139,3 +130,25 @@ You are mounting a local volume (-v) directory to the container (`/data`). This 
 The tool should output `.copc.laz` files to the same directory where the input point clouds were storesd. It is slow and might take a while.   
 
 ### Next
+
+
+This repo describes how to run PDAl in a local conda environment and in Docker containers
+
+PDAL is a library for reading and writing point cloud data. Documentation for PDAL is found [here](https://pdal.io/en/2.5.2)
+
+
+## Running Pdal from local conda environment
+
+`conda create --yes --name pdal_copc --channel conda-forge pdal`
+
+</br>
+
+ 
+
+### In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
+```
+chmod +x pdal_copc.sh
+./pdal_copc.sh
+```
+
+

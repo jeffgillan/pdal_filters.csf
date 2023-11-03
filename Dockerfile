@@ -1,5 +1,4 @@
-FROM pdal/pdal:latest
-
+FROM pdal/pdal:sha-597ab2df
 
 WORKDIR /app
 

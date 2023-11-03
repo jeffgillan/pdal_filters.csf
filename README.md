@@ -70,6 +70,21 @@ chmod +x pdal_copc.sh
 
 ## Run PDAL in a Docker Container
 
+This is a tutorial to demonstrate how to containerize and run PDAL. [PDAL](https://pdal.io/en/2.6.0/) is a stand-alone software package that can analyze and manipulate point cloud data files such as .las and .laz. In this tutorial, we will convert a LiDAR .laz file into a [Cloud-optimized Point Cloud format (.copc.laz)](https://www.gillanscience.com/cloud-native-geospatial/copc/). 
+
+### 1. Clone this repository to your local machine
+
+`git clone https://github.com/jeffgillan/pdal_copc.git`
+
+### 2. Change directories into the newly cloned repository
+
+`cd pdal_copc`
+
+### 3. Run the Container
+
+`docker run -v $(pwd):/data jeffgillan/pdal_copc:1.0`
+
+
 Create a Dockerfile for your container that includes PDAL and any other dependencies needed for you shell script. 
 
 `touch Dockerfile`

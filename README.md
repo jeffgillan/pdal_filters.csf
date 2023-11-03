@@ -74,14 +74,15 @@ find /data -type f \( -name "*.las" -o -name "*.laz" \) -print0 | while IFS= rea
 done
 ```
 
+### 3. Create a Dockerfile 
 
+You are creating a Docker image that includes a PDAL base image, the json pipeline file, and the shell script. 
 
-
-Create a Dockerfile for your container that includes PDAL and any other dependencies needed for you shell script. 
+#### Create an empty Dockerfile
 
 `touch Dockerfile`
 
-### Edit the Dockerfile
+#### Edit the Dockerfile
 
 `nano Dockerfile`
 
@@ -98,9 +99,10 @@ RUN chmod +x pdal_copc.sh
 
 ENTRYPOINT ["/app/pdal_copc.sh"]
 ```
+
 The following is happening in the Dockerfile:
 
-A pdal base image is being pulled from Dockerhub
+A PDAL base image is being pulled from Dockerhub
 
 I set the working directory of the container to `/app`
 

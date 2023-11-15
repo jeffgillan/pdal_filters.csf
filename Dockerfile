@@ -2,10 +2,10 @@ FROM pdal/pdal:sha-597ab2df
 
 WORKDIR /app
 
-COPY pdal_copc.sh /app/pdal_copc.sh
+COPY pdal_csf.sh /app/pdal_csf.sh
 
-COPY copc.json /app/copc.json
+COPY filter_csf.json /app/filter_csf.json
 
-RUN chmod +x pdal_copc.sh
+RUN chmod +x pdal_csf.sh
 
-ENTRYPOINT ["/app/pdal_copc.sh"]
+ENTRYPOINT ["/app/pdal_csf.sh"]

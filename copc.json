@@ -1,7 +1,7 @@
 [
     "file.las",
     {
-        "type":filters.csf
+        "type":"filters.csf"
     },
     "output.copc.laz"
 ]

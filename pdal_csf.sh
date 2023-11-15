@@ -10,8 +10,10 @@ find /data -type f \( -name "*.laz" -o -name "*.copc.laz" \) -print0 | while IFS
 
     # Run the pipeline with the appropriate reader based on the file extension
     if [[ "$extension" == "laz" ]]; then
-        pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="${file%.laz}.copc.laz"
+        output_file="filtered_${file}"
+        pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="$output_file"
     elif [[ "$extension" == "copc.laz" ]]; then
-        pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="${file%.copc.laz}.copc.laz"
+        output_file="filtered_${file}"
+        pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="$output_file"
     fi
 done

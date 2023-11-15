@@ -54,10 +54,10 @@ Analyzing pointclouds in PDAL requires users to specify processing steps within 
 
 The shell script will loop through a directory (within the container) and find all .laz and .las files and then convert them to copc.laz. The shell script references the json file (pipeline), so the path to the json needs to be specified within the shell script. 
 
-`touch pdal_copc.sh`
+`touch pdal_csf.sh`
 
 #### Edit the shell script
-`nano pdal_copc.sh`
+`nano pdal_csf.sh`
 
 ```
 #!/bin/bash

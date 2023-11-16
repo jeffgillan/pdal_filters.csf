@@ -10,5 +10,5 @@ find /data -type f \( -name "*.copc.laz" \) -print0 | while IFS= read -r -d '' f
 
     # Run the pipeline with the appropriate reader based on the file extension
 
-    pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="${file%.copc.laz}.copc.laz"
-    
+    pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="${file%.copc.laz}_filtered.copc.laz"
+done    

@@ -14,7 +14,7 @@ This is a tutorial to demonstrate how to containerize and run PDAL. [PDAL](https
 
 `docker run -v $(pwd):/data jeffgillan/pdal_csf:1.0`
 
-Your if everything worked correctly, you should have a new file `odm_georeferenced_model.copc.copc.laz` in your present working directory.
+Your if everything worked correctly, you should have a new file `odm_georeferenced_model_filtered.copc.laz` in your present working directory.
 
 You can visualize and see the classification using https://viewer.copc.io/
 

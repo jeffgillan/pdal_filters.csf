@@ -66,17 +66,14 @@ The shell script will loop through a directory (within the container) and find a
 pipeline="/app/filter_csf.json"
 
 # Loop over LAS/LAZ files in a directory and subdirectories. It this example, it loops over `/data` in the container. 
-find /data -type f \( -name "*.laz" -o -name "*.copc.laz" \) -print0 | while IFS= read -r -d '' file; do
+find /data -type f \( -name "*.copc.laz" \) -print0 | while IFS= read -r -d '' file; do
     # Get the file extension
     extension="${file##*.}"
 
-    # Run the pipeline with the appropriate reader based on the file extension
-    if [[ "$extension" == "laz" ]]; then
-        pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="${file%.laz}.copc.laz"
-    elif [[ "$extension" == "copc.laz" ]]; then
-        pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="${file%.copc.laz}.copc.laz"
-    fi
-done
+    # Run the pipeline with the appropriate reader based on the file extension. Output the file as `<file_name>_filtered.copc.laz`
+
+    pdal pipeline -i "$pipeline" --readers.las.filename="$file" --writers.copc.filename="${file%.copc.laz}_filtered.copc.laz"
+done 
 ```
 
 ### 3. Create a Dockerfile 
@@ -132,7 +129,7 @@ You are mounting a local volume (-v) directory to the container (`/data`). This 
 
 ### 6. Outputs
 
-The tool should output `.copc.copc.laz` files to the same directory where the input point clouds were storesd.    
+The tool should output `<file_name>_filtered.copc.laz` files to the same directory where the input point clouds were stored.    
 
 ### 7. Upload Image to Docker Hub
 
@@ -141,18 +138,6 @@ The tool should output `.copc.copc.laz` files to the same directory where the in
 </br>
 ____
 
-## Running Pdal from local conda environment
 
-Create a new conda environment
-
-`conda create --yes --name pdal_copc --channel conda-forge pdal`
-
-
-In your conda environment (conda activate pdal_copc) run the following commands to run the shell script
-
-```
-chmod +x pdal_csf.sh
-./pdal_csf.sh
-```
 
 

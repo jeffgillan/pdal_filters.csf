@@ -38,7 +38,7 @@ Analyzing pointclouds in PDAL requires users to specify processing steps within 
 
 </br>
 
-#### Write this info in the pipeline file. It will convert .las & .laz files to cloud optimized point clouds (.copc.laz)
+#### Write this info in the pipeline file. It will classify the points as ground or non-ground. It will output as a cloud optimized point cloud (.copc.laz).
 ```
 [
     "file.las",
@@ -52,7 +52,7 @@ Analyzing pointclouds in PDAL requires users to specify processing steps within 
 
 ### 2. Create a shell script
 
-The shell script will loop through a directory (within the container) and find all .laz and .las files and then convert them to copc.laz. The shell script references the json file (pipeline), so the path to the json needs to be specified within the shell script. 
+Because PDAL is a command line tool, we need to instruct it with shell commands. The shell script will loop through a directory (within the container) and find all .copc.laz. It will pass the files to the json pipeline which will execute the classification of ground v. non-ground points. The path to the json needs to be specified within the shell script. 
 
 `touch pdal_csf.sh`
 

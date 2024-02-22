@@ -1,4 +1,4 @@
-## Run PDAL in a Docker Container.
+## Run PDAL in a Docker Container...
 
 This is a tutorial to demonstrate how to containerize and run PDAL. [PDAL](https://pdal.io/en/2.6.0/) is a stand-alone software package that can analyze and manipulate point cloud data files such as .las and .laz. In this tutorial, we will filter a Cloud Optimized point cloud (.copc.laz) to classify the ground points from the tree canopy points. The point cloud file is located in this repository and is called `odm_georeferenced_model.copc.laz`. It currently has no point classification. We will be using a [Cloth Simulation Filter](https://pdal.io/en/2.6.0/stages/filters.csf.html#filters-csf). Background on Coth Simulation Filter can be found [here](https://www.cloudcompare.org/doc/wiki/index.php/CSF_(plugin))
 
